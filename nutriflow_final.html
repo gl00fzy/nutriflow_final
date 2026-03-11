@@ -1,0 +1,1482 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NutriFlow - Master Pitch Deck</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@400;600;700;800&family=Prompt:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* 1. THE SETUP (Agri-Tech Dark Theme) */
+        * {
+            box-sizing: border-box;
+        }
+
+        p {
+            margin: 0;
+            margin-bottom: 15px;
+        }
+
+        body {
+            background-color: #020617;
+            /* Very dark slate */
+            display: grid;
+            gap: 20px;
+            grid-template-columns: 1fr;
+            margin: 0;
+            min-height: 100vh;
+            padding: 20px 0;
+            place-items: center;
+        }
+
+        .slide-container {
+            align-items: center;
+            background-color: #0f172a;
+            /* Slate 900 */
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            font-family: 'Prompt', 'Inter', sans-serif;
+            height: 720px;
+            justify-content: center;
+            overflow: hidden;
+            padding: 60px;
+            position: relative;
+            width: 1280px;
+        }
+
+        /* Ambient Glow */
+        .slide-container::before {
+            background: radial-gradient(circle at top right, rgba(16, 185, 129, 0.05), transparent 50%),
+                radial-gradient(circle at bottom left, rgba(30, 41, 59, 0.5), transparent 50%);
+            content: '';
+            height: 100%;
+            left: 0;
+            position: absolute;
+            top: 0;
+            width: 100%;
+            z-index: 0;
+        }
+
+        .slide-container>* {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* 2. CONSISTENT TYPOGRAPHY */
+        .slide-container h1,
+        .slide-container h2,
+        .slide-container h3 {
+            color: #f8fafc;
+            font-weight: 700;
+            font-family: 'Prompt', 'Poppins', sans-serif;
+            margin: 0;
+        }
+
+        .slide-container h1 span,
+        .slide-container h2 span {
+            color: #10b981;
+            /* Emerald Green */
+        }
+
+        .slide-container p,
+        .slide-container li,
+        .slide-container .subtitle,
+        .slide-container .number-label,
+        .slide-container .legend li,
+        .slide-container .chart-summary,
+        .slide-container .bar .label,
+        .slide-container th,
+        .slide-container td,
+        .slide-container .alternating-text-tile p,
+        .slide-container .bleed-text-side p {
+            color: #cbd5e1;
+            font-family: 'Prompt', 'Inter', sans-serif;
+        }
+
+        /* Font Sizes */
+        .slide-container h1 {
+            font-size: 70px;
+        }
+
+        .slide-container .slide-title {
+            font-size: 45px;
+            font-weight: 700;
+            margin-bottom: 40px;
+            text-align: left;
+            width: 100%;
+            border-left: 6px solid #10b981;
+            padding-left: 20px;
+            line-height: 1.2;
+        }
+
+        .slide-container h3 {
+            font-size: 30px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #f1f5f9;
+        }
+
+        .slide-container p,
+        .slide-container li,
+        .slide-container th,
+        .slide-container td,
+        .slide-container .bleed-text-side p {
+            font-size: 20px;
+            line-height: 1.5;
+        }
+
+        .slide-container .subtitle {
+            font-size: 24px;
+            font-weight: 400;
+            margin: 20px auto;
+            color: #94a3b8;
+        }
+
+        .slide-container .content-area {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: center;
+            width: 100%;
+        }
+
+        /* 3. LAYOUT DEFINITIONS */
+        .title-layout {
+            text-align: center;
+        }
+
+        .two-column {
+            align-items: flex-start;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            width: 100%;
+        }
+
+        .two-column.tiled {
+            align-items: stretch;
+        }
+
+        .two-column.tiled>div {
+            background-color: #1e293b;
+            border-radius: 12px;
+            border: 1px solid #334155;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .two-column.tiled h3 {
+            color: #10b981;
+        }
+
+        .two-column ul {
+            list-style: none;
+            margin: 0;
+            padding-left: 0;
+        }
+
+        .two-column li {
+            margin-bottom: 25px;
+            position: relative;
+            padding-left: 35px;
+            color: #f8fafc;
+        }
+
+        .two-column li::before {
+            content: '\f058';
+            /* Check circle */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: #10b981;
+            position: absolute;
+            left: 0;
+            top: 2px;
+            font-size: 22px;
+        }
+
+        .image-wrapper {
+            border-radius: 12px;
+            height: 380px;
+            max-width: 100%;
+            overflow: hidden;
+            width: 100%;
+            border: 1px solid #334155;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .image-wrapper img {
+            height: 100%;
+            max-width: 100%;
+            object-fit: cover;
+            width: 100%;
+        }
+
+        .two-column .image-wrapper img {
+            object-fit: cover;
+        }
+
+        .tiled-content {
+            align-items: stretch;
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .tile {
+            align-items: center;
+            background-color: #1e293b;
+            border-radius: 12px;
+            border: 1px solid #334155;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            justify-content: flex-start;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .tile .icon {
+            color: #10b981;
+            font-size: 55px;
+            margin-bottom: 25px;
+        }
+
+        .image-tile {
+            flex: 1;
+            text-align: center;
+        }
+
+        .image-tile .image-wrapper {
+            height: 225px;
+            margin-bottom: 20px;
+        }
+
+        /* Full Background Image Layout */
+        .full-bg-image {
+            background-position: center;
+            background-size: cover;
+        }
+
+        .full-bg-image .content-overlay {
+            text-align: center;
+        }
+
+        .full-bg-image h1 {
+            font-size: 110px;
+            text-transform: uppercase;
+            letter-spacing: -2px;
+        }
+
+        .full-bg-image p {
+            color: #f8fafc;
+            font-size: 30px;
+        }
+
+        /* Bleed Image Right Layout */
+        .slide-container.bleed-image-layout {
+            align-items: start;
+            display: grid;
+            gap: 50px;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            padding: 0;
+        }
+
+        .slide-container.bleed-image-layout>.content-container {
+            padding: 60px 0 60px 60px;
+        }
+
+        .slide-container.bleed-image-layout>.image-container {
+            height: 100%;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .slide-container.bleed-image-layout img.bleed-image-side {
+            border-radius: 0 8px 8px 0;
+            display: block;
+            height: 720px;
+            object-fit: cover;
+            object-position: center;
+            width: 100%;
+        }
+
+        .slide-container.bleed-image-layout .bleed-text-side {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .slide-container.bleed-image-layout .bleed-text-side p {
+            margin-bottom: 1.5rem;
+        }
+
+        /* Highlight Numbers */
+        .highlight-numbers-layout>div:first-child {
+            flex: 0 0 45%;
+            text-align: center;
+        }
+
+        .highlight-numbers-layout .number {
+            color: #10b981;
+            font-size: 140px;
+            font-weight: 800;
+            font-family: 'Poppins', sans-serif;
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+
+        .highlight-numbers-layout .number-label {
+            font-size: 26px;
+            font-weight: 600;
+            color: #f8fafc;
+        }
+
+        /* Table Layout */
+        .table-layout {
+            width: 100%;
+        }
+
+        .table-layout table {
+            border-collapse: collapse;
+            width: 100%;
+            background: #1e293b;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .table-layout th,
+        .table-layout td {
+            border-bottom: 1px solid #334155;
+            padding: 18px 24px;
+            text-align: left;
+        }
+
+        .table-layout th {
+            background-color: #0f172a;
+            color: #10b981;
+            font-size: 20px;
+            font-weight: 700;
+            font-family: 'Prompt', sans-serif;
+        }
+
+        .table-layout tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Chart Styling */
+        .chart-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+        }
+
+        .bar {
+            align-items: center;
+            display: flex;
+            gap: 20px;
+        }
+
+        .bar .label {
+            color: #f8fafc;
+            flex: 0 0 220px;
+            font-weight: 700;
+            text-align: right;
+            font-family: 'Prompt';
+        }
+
+        .bar .bar-inner {
+            background-color: #1e293b;
+            border-radius: 8px;
+            flex-grow: 1;
+            height: 50px;
+        }
+
+        .bar .bar-fill {
+            align-items: center;
+            border-radius: 8px;
+            color: #020617;
+            display: flex;
+            font-size: 20px;
+            font-weight: 800;
+            height: 100%;
+            justify-content: flex-end;
+            padding-right: 15px;
+        }
+
+        /* Timeline Layout */
+        .timeline-layout {
+            align-items: stretch;
+            display: flex;
+            height: 100%;
+            justify-content: space-between;
+            position: relative;
+            width: 100%;
+        }
+
+        .timeline-layout .timeline-line {
+            background-color: #334155;
+            height: 4px;
+            left: 0;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-2px);
+            width: 100%;
+            z-index: 0;
+        }
+
+        .timeline-item {
+            position: relative;
+            text-align: center;
+            width: 23%;
+        }
+
+        .timeline-item::after {
+            background-color: #0f172a;
+            border-radius: 50%;
+            border: 4px solid #10b981;
+            content: '';
+            height: 20px;
+            left: 50%;
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            z-index: 1;
+        }
+
+        .timeline-item .content-wrapper {
+            left: 0;
+            position: absolute;
+            width: 100%;
+            background: #1e293b;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #334155;
+        }
+
+        .timeline-item:nth-child(odd) .content-wrapper {
+            bottom: 50%;
+            margin-bottom: 25px;
+        }
+
+        .timeline-item:nth-child(even) .content-wrapper {
+            margin-top: 25px;
+            top: 50%;
+        }
+
+        .timeline-item h3 {
+            color: #10b981;
+            font-size: 22px;
+        }
+
+        /* Rounded Image Layout */
+        .rounded-image-layout .image-wrapper {
+            border-radius: 50%;
+            flex-shrink: 0;
+            height: 400px;
+            width: 400px;
+            max-width: 400px;
+            margin: 0 auto;
+            border: 4px solid #10b981;
+        }
+
+        .rounded-image-layout.two-column {
+            align-items: center;
+        }
+
+        /* Quote Layout */
+        .quote-layout {
+            margin: 0 auto;
+            text-align: center;
+            width: 85%;
+        }
+
+        .quote-layout blockquote {
+            color: #f8fafc;
+            font-size: 48px;
+            font-weight: 600;
+            font-family: 'Prompt', sans-serif;
+            line-height: 1.4;
+            margin: 0 0 30px 0;
+            padding: 0 40px;
+            position: relative;
+        }
+
+        .quote-layout blockquote::before,
+        .quote-layout blockquote::after {
+            color: #10b981;
+            content: '"';
+            font-size: 100px;
+            line-height: 0;
+            position: absolute;
+            opacity: 0.5;
+        }
+
+        .quote-layout blockquote::before {
+            left: -20px;
+            top: 30px;
+        }
+
+        .quote-layout blockquote::after {
+            bottom: 10px;
+            right: -20px;
+        }
+
+        .quote-layout cite {
+            color: #10b981;
+            font-size: 26px;
+            font-style: normal;
+            font-weight: 600;
+        }
+
+        /* Q&A Layout */
+        .qa-layout {
+            margin: 0 auto;
+            text-align: center;
+            width: 100%;
+            align-self: center;
+        }
+
+        .qa-layout h2 {
+            font-size: 70px;
+            margin-bottom: 20px;
+            color: #10b981;
+            font-family: 'Prompt';
+            font-weight: 700;
+        }
+
+        .qa-layout p {
+            font-size: 26px;
+            color: #f8fafc;
+        }
+
+        .qa-layout .contact-info {
+            color: #cbd5e1;
+            font-size: 22px;
+            margin-top: 40px;
+        }
+
+        .slide-number {
+            position: absolute;
+            bottom: 30px;
+            right: 40px;
+            font-size: 16px;
+            color: #475569;
+            font-weight: 600;
+            z-index: 10;
+        }
+
+        /* AI Feature Styles */
+        .ai-panel {
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 12px;
+            padding: 30px;
+            width: 100%;
+            text-align: left;
+        }
+
+        .ai-input-group {
+            margin-bottom: 20px;
+        }
+
+        .ai-input-group label {
+            display: block;
+            color: #94a3b8;
+            font-size: 16px;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .ai-input {
+            width: 100%;
+            padding: 14px;
+            border-radius: 8px;
+            border: 1px solid #334155;
+            background: #0f172a;
+            color: #f8fafc;
+            font-family: 'Prompt', 'Inter', sans-serif;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        .ai-input:focus {
+            outline: none;
+            border-color: #10b981;
+        }
+
+        .ai-button {
+            background: #10b981;
+            color: #020617;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 18px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: 0.2s;
+            width: 100%;
+            font-family: 'Prompt';
+        }
+
+        .ai-button:hover {
+            background: #059669;
+        }
+
+        .ai-button:disabled {
+            background: #475569;
+            cursor: not-allowed;
+            color: #94a3b8;
+        }
+
+        .ai-result-box {
+            background: #020617;
+            border-left: 4px solid #10b981;
+            padding: 25px;
+            border-radius: 0 8px 8px 0;
+            min-height: 250px;
+            font-size: 18px;
+            color: #f8fafc;
+            white-space: pre-wrap;
+            line-height: 1.6;
+            display: none;
+            position: relative;
+            overflow-y: auto;
+            max-height: 380px;
+        }
+
+        .ai-result-title {
+            color: #10b981;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            font-family: 'Prompt', sans-serif;
+        }
+
+        .loader {
+            display: none;
+            border: 4px solid #334155;
+            border-top: 4px solid #10b981;
+            border-radius: 50%;
+            width: 28px;
+            height: 28px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .qa-ai-box {
+            margin-top: 30px;
+            background: rgba(30, 41, 59, 0.8);
+            border: 1px solid #334155;
+            padding: 20px;
+            border-radius: 12px;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .qa-ai-input {
+            flex-grow: 1;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #334155;
+            background: #0f172a;
+            color: #f8fafc;
+            font-size: 18px;
+            font-family: 'Prompt';
+        }
+
+        .qa-ai-button {
+            background: #10b981;
+            color: #020617;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 18px;
+            cursor: pointer;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Prompt';
+        }
+
+        .qa-ai-response {
+            display: none;
+            margin-top: 20px;
+            text-align: left;
+            background: #0f172a;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #10b981;
+            color: #f8fafc;
+            font-size: 18px;
+            line-height: 1.5;
+            font-family: 'Prompt';
+        }
+
+        /* Slide Navigation Bar */
+        #slide-nav {
+            position: fixed;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            z-index: 9999;
+            background: rgba(15, 23, 42, 0.85);
+            padding: 10px 18px;
+            border-radius: 50px;
+            border: 1px solid #334155;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        #slide-nav .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #334155;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        #slide-nav .dot.active {
+            background: #10b981;
+            transform: scale(1.5);
+            box-shadow: 0 0 8px rgba(16, 185, 129, 0.6);
+        }
+
+        #slide-nav .dot:hover:not(.active) {
+            background: #64748b;
+            transform: scale(1.2);
+        }
+
+        /* TAM / SAM / SOM Funnel */
+        .funnel-wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+            width: 100%;
+        }
+
+        .funnel-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            border-radius: 10px;
+            padding: 14px 24px;
+            text-align: center;
+            clip-path: polygon(8% 0%, 92% 0%, 100% 100%, 0% 100%);
+        }
+
+        .funnel-row.tam {
+            width: 100%;
+            background: linear-gradient(135deg, #1e293b, #334155);
+            border: 1px solid #475569;
+        }
+
+        .funnel-row.sam {
+            width: 76%;
+            background: linear-gradient(135deg, #0f2d2a, #0d4a3e);
+            border: 1px solid #0d9488;
+        }
+
+        .funnel-row.som {
+            width: 50%;
+            background: linear-gradient(135deg, #059669, #10b981);
+            border: 1px solid #34d399;
+        }
+
+        .funnel-row .f-tag {
+            font-size: 22px;
+            font-weight: 800;
+            color: #f8fafc;
+            font-family: 'Poppins', sans-serif;
+            line-height: 1;
+        }
+
+        .funnel-row.som .f-tag {
+            color: #020617;
+        }
+
+        .funnel-row .f-desc {
+            font-size: 13px;
+            color: #94a3b8;
+            font-family: 'Prompt', sans-serif;
+            margin: 4px 0 0 0;
+        }
+
+        .funnel-row.som .f-desc {
+            color: #0f2d2a;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Slide Navigation Bar -->
+    <div id="slide-nav"></div>
+
+    <!-- Slide 1: Title_Slide -->
+    <div class="slide-container full-bg-image" id="slide1"
+        style="background-image: linear-gradient(rgba(2, 6, 23, 0.8), rgba(2, 6, 23, 0.95)), url('slide1_bg.png');">
+        <div class="content-overlay">
+            <h1>Nutri<span>Flow</span></h1>
+            <p style="font-family: 'Prompt';">บ้านอัจฉริยะสำหรับรากพืช</p>
+            <p style="font-family: 'Prompt'; color: #475569; font-size: 18px; margin-top: 20px; letter-spacing: 2px;">
+                ทีมหลวงพี่เท่ง &nbsp;·&nbsp; 2025</p>
+        </div>
+    </div>
+
+    <!-- Slide 2: Image_Right_Text_Left (The Macro Trend) -->
+    <div class="slide-container" id="slide2">
+        <h2 class="slide-title">เทรนด์ระดับโลก: <span>IoT ในการเกษตร</span></h2>
+        <div class="content-area">
+            <div class="two-column">
+                <div>
+                    <p>โลกกำลังก้าวเข้าสู่อุตสาหกรรมยุค 4.0 อย่างรวดเร็ว ในขณะที่ Smart Home และ Smart Factory
+                        ได้รับเงินลงทุนมหาศาล แต่ภาคการเกษตรกลับเป็นกลุ่มที่นำเทคโนโลยีมาใช้น้อยที่สุด</p>
+                    <ul>
+                        <li><strong>การเติบโตมหาศาล:</strong> ตลาด IoT เพื่อการเกษตรทั่วโลกกำลังขยายตัวอย่างก้าวกระโดด
+                            ขับเคลื่อนโดยความต้องการด้านความยั่งยืน</li>
+                        <li><strong>ช่องว่างของตลาด:</strong> เกษตรกรส่วนใหญ่ยังคงพึ่งพาสัญชาตญาณแทนการใช้ข้อมูล
+                            ทำให้เกิดการสูญเสียทรัพยากรอย่างมหาศาล</li>
+                        <li><strong>ภารกิจของเรา:</strong> อุดช่องว่างนี้ด้วยการนำเทคโนโลยี IoT
+                            ขั้นสูงมาสู่ฟาร์มระดับท้องถิ่น เพื่อพลิกโฉมวิธีการผลิตอาหารของโลก</li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="image-wrapper"><img
+                            src="slide2_iot.png"
+                            alt="โครงข่าย IoT เหนือพื้นที่เกษตรกรรม"></div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">2 / 15</div>
+    </div>
+
+    <!-- Slide 3: Tiled_Text_With_Icons (The Painful Reality) -->
+    <div class="slide-container" id="slide3">
+        <h2 class="slide-title">ปัญหา <span>ที่เจ็บปวดหน้างาน</span></h2>
+        <div class="content-area">
+            <div class="tiled-content">
+                <div class="tile">
+                    <div class="icon"><i class="fa-solid fa-eye-slash"></i></div>
+                    <h3>ทำเกษตรแบบตาบอด</h3>
+                    <p>เกษตรกรไม่สามารถมองเห็นสุขภาพดินได้แบบเรียลไทม์ พวกเขาจะรู้ปัญหาต่อเมื่อต้นไม้แสดงอาการป่วยออกมา
+                        ซึ่งมักจะสายเกินแก้</p>
+                </div>
+                <div class="tile">
+                    <div class="icon"><i class="fa-solid fa-scale-unbalanced"></i></div>
+                    <h3>สิ้นเปลืองทรัพยากร</h3>
+                    <p>การใช้ "ความรู้สึก" นำไปสู่การให้น้ำและปุ๋ยที่ผิดพลาด นอกจากจะเปลืองค่าปุ๋ยราคาแพงแล้ว
+                        ยังเป็นสาเหตุหลักของโรครากเน่า</p>
+                </div>
+                <div class="tile">
+                    <div class="icon"><i class="fa-solid fa-users-slash"></i></div>
+                    <h3>วิกฤตแรงงาน</h3>
+                    <p>การหาคนงานที่มีทักษะมาผสมปุ๋ยและเดินรดน้ำทุกวันในสวนผลไม้ขนาดใหญ่
+                        เป็นเรื่องที่ยากลำบากและมีต้นทุนสูงมากในปัจจุบัน</p>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">3 / 15</div>
+    </div>
+
+    <!-- Slide 4: Bleed_Image_Right (The Solution) -->
+    <div class="slide-container bleed-image-layout" id="slide4">
+        <div class="content-container">
+            <h2 class="slide-title" style="border:none; padding:0; font-size:55px; margin-bottom: 20px;">
+                เลิกเดา<br><span>แล้วเริ่มใช้ข้อมูลจริง</span></h2>
+            <div class="content-area">
+                <div class="bleed-text-side">
+                    <p style="font-size: 24px; color: #f8fafc; font-weight: 500;">NutriFlow
+                        ทำหน้าที่เสมือนคุณหมอประจำตัวของต้นไม้</p>
+                    <p>เรากำจัดความผิดพลาดของมนุษย์ให้เป็นศูนย์ โดยเปลี่ยนการรดน้ำที่ใช้แรงงานเยอะ ให้เป็นระบบอัตโนมัติ
+                        (Fertigation) ที่ขับเคลื่อนด้วย AI แม่นยำ 100%</p>
+                    <p>เกษตรกรสามารถควบคุมสวนขนาดร้อยไร่ได้ผ่านมือถือ
+                        พร้อมรับการแจ้งเตือนแบบเรียลไทม์ก่อนที่ความเสียหายของรากพืชจะเกิดขึ้น</p>
+                </div>
+            </div>
+        </div>
+        <div class="image-container">
+            <img class="bleed-image-side"
+                src="slide4_farmer.png"
+                alt="เกษตรกรยุคใหม่ใช้แท็บเล็ตในสวน">
+        </div>
+        <div class="slide-number">4 / 15</div>
+    </div>
+
+    <!-- Slide 5: Tiled_Images (How it Works) -->
+    <div class="slide-container" id="slide5">
+        <h2 class="slide-title">หลักการทำงาน: <span>ลูป 3 ขั้นตอน</span></h2>
+        <div class="content-area">
+            <div class="tiled-content">
+                <div class="image-tile">
+                    <div class="image-wrapper"><img
+                            src="slide5_sensor.png"
+                            alt="เซนเซอร์ IoT อัจฉริยะในดิน"></div>
+                    <h3 style="color:#10b981; font-size: 24px; margin-bottom:10px;">1. ตรวจวัด (Check)</h3>
+                    <p>เซนเซอร์ IoT เกรดอุตสาหกรรมฝังลงในดิน เพื่อเก็บข้อมูลธาตุอาหาร (NPK) ความชื้น และ pH ตลอด 24
+                        ชั่วโมง</p>
+                </div>
+                <div class="image-tile">
+                    <div class="image-wrapper"><img
+                            src="slide5_ai.png"
+                            alt="เครือข่ายสมองกล AI"></div>
+                    <h3 style="color:#10b981; font-size: 24px; margin-bottom:10px;">2. วิเคราะห์ (Think)</h3>
+                    <p>สมองกล AI กลางจะประมวลผลข้อมูลจากเซนเซอร์ทันที
+                        เพื่อคำนวณหาสูตรปุ๋ยเฉพาะที่ต้นไม้ต้องการในเวลานั้นอย่างแม่นยำ</p>
+                </div>
+                <div class="image-tile">
+                    <div class="image-wrapper"><img
+                            src="slide5_drip.png"
+                            alt="ระบบให้น้ำหยดแม่นยำ"></div>
+                    <h3 style="color:#10b981; font-size: 24px; margin-bottom:10px;">3. ให้อาหาร (Feed)</h3>
+                    <p>ปั๊มผสมปุ๋ยอัตโนมัติจะผสมสารอาหารและจ่ายน้ำส่งตรงถึงรากพืชผ่านระบบน้ำหยด
+                        โดยที่เกษตรกรไม่ต้องออกแรง</p>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">5 / 15</div>
+    </div>
+
+    <!-- Slide 6: NEW SLIDE - Live AI Demo -->
+    <div class="slide-container" id="slide6">
+        <h2 class="slide-title">สาธิตระบบจริง: <span>AI Engine</span></h2>
+        <div class="content-area">
+            <p style="text-align: center; margin-bottom: 30px; font-size: 22px;">มาทดสอบ AI ของเรากัน!
+                ลองกรอกข้อมูลฟาร์มของคุณด้านล่าง เพื่อให้ระบบประมวลผลสูตรปุ๋ยแบบเรียลไทม์</p>
+            <div class="two-column" style="align-items: stretch;">
+                <div class="ai-panel">
+                    <div class="ai-input-group">
+                        <label><i class="fa-solid fa-leaf"></i> ชนิดพืช</label>
+                        <input type="text" id="demo-crop" class="ai-input" placeholder="เช่น ทุเรียนหมอนทอง อายุ 5 ปี"
+                            value="ทุเรียนหมอนทอง (อายุ 5 ปี)">
+                    </div>
+                    <div class="ai-input-group">
+                        <label><i class="fa-solid fa-mound"></i> สภาพดิน (ข้อมูลจากเซนเซอร์)</label>
+                        <input type="text" id="demo-soil" class="ai-input"
+                            placeholder="เช่น ดินร่วนปนทราย, ความชื้น 40%, pH 5.5"
+                            value="ดินร่วนปนทราย, ความชื้น 40%, pH 5.5">
+                    </div>
+                    <div class="ai-input-group">
+                        <label><i class="fa-solid fa-cloud-sun-rain"></i> พยากรณ์อากาศ</label>
+                        <input type="text" id="demo-weather" class="ai-input" placeholder="เช่น พรุ่งนี้ฝนตกหนัก"
+                            value="ร้อนและแห้งจัด, 35°C">
+                    </div>
+                    <button id="btn-generate-recipe" class="ai-button">✨ สร้างสูตรปุ๋ยเฉพาะของคุณ ✨</button>
+                </div>
+
+                <div class="ai-panel" style="background: transparent; border: none; padding: 0;">
+                    <div id="recipe-loader" style="text-align: center; padding-top: 80px; display: none;">
+                        <div class="loader" style="display: block;"></div>
+                        <p style="margin-top: 20px; color: #10b981;">AI กำลังคำนวณสูตรอาหารที่เหมาะสมที่สุด...</p>
+                    </div>
+                    <div id="recipe-result" class="ai-result-box">
+                        <div class="ai-result-title"><i class="fa-solid fa-flask"></i> สูตรอาหารที่ดีที่สุดของคุณ</div>
+                        <div id="recipe-text">คำแนะนำจาก AI จะแสดงที่นี่</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">6 / 15</div>
+    </div>
+
+    <!-- Slide 7: Bar_Chart_For_Comparisons (Market Validation) -->
+    <div class="slide-container" id="slide7">
+        <h2 class="slide-title">บทพิสูจน์ตลาด: <span>การปรับแผน (Pivot)</span></h2>
+        <div class="content-area">
+            <p style="text-align: center; margin-bottom: 40px; font-size: 22px;">ผลสำรวจจากเกษตรกร 38 ท่าน
+                ทำให้เราพบความจริงว่า: <b>ตลาดแมสไม่พร้อมจ่ายเทคโนโลยี</b>
+                เราจึงปรับแผนบุกตลาดพืชมูลค่าสูงที่คุ้มค่าต่อการลงทุน</p>
+            <div class="chart-container" style="width: 85%;">
+                <div class="bar">
+                    <div class="label">ตลาดแมส (ข้าว/ข้าวโพด)</div>
+                    <div class="bar-inner">
+                        <div class="bar-fill" style="width: 16%; background: linear-gradient(90deg, #475569, #64748b);">
+                            16%</div>
+                    </div>
+                </div>
+                <div class="bar">
+                    <div class="label">พืชมูลค่าสูง (ทุเรียน/โรงเรือน)</div>
+                    <div class="bar-inner">
+                        <div class="bar-fill" style="width: 97%; background: linear-gradient(90deg, #059669, #10b981);">
+                            97%</div>
+                    </div>
+                </div>
+            </div>
+            <p class="chart-summary" style="color: #10b981; font-weight: 600; font-size: 24px; margin-top: 30px;">97%
+                ของเกษตรกรกลุ่มพืชมูลค่าสูง พร้อมและต้องการใช้งานระบบอัตโนมัติทันที</p>
+        </div>
+        <div class="slide-number">7 / 15</div>
+    </div>
+
+    <!-- Slide 8: Highlighted_Numbers (Market Size) -->
+    <div class="slide-container" id="slide8">
+        <h2 class="slide-title">เจาะตลาด <span>มูลค่ามหาศาล</span></h2>
+        <div class="content-area">
+            <div class="two-column highlight-numbers-layout" style="align-items: center;">
+                <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <h3 style="color: #10b981; font-size: 20px; margin-bottom: 14px; text-align: center;">โอกาสทางตลาด
+                    </h3>
+                    <div class="funnel-wrap">
+                        <div class="funnel-row tam">
+                            <div class="f-tag">TAM</div>
+                            <p class="f-desc">Smart Farming ทั้งหมดในไทย &gt; 10,000 ล้านบาท</p>
+                        </div>
+                        <div class="funnel-row sam">
+                            <div class="f-tag">SAM</div>
+                            <p class="f-desc">สวนผลไม้มูลค่าสูง + โรงเรือน ~3,000 ล้านบาท</p>
+                        </div>
+                        <div class="funnel-row som">
+                            <div class="f-tag">SOM</div>
+                            <p class="f-desc">100 ฟาร์มทุเรียนภาคตะวันออก</p>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h3 style="font-size: 36px; margin-bottom: 20px;">กลยุทธ์การขยายตลาด</h3>
+                    <p><strong>TAM (ตลาดรวมทั้งหมด):</strong> ตลาด Smart Farming
+                        ในไทยมีมูลค่ากว่าหมื่นล้านบาทและกำลังเติบโตอย่างรวดเร็ว</p>
+                    <p><strong>SAM (ตลาดที่เราเข้าถึงได้):</strong>
+                        เราโฟกัสเฉพาะกลุ่มสวนผลไม้มูลค่าสูงและโรงเรือนอัจฉริยะ ซึ่งมีมูลค่าหลายพันล้านบาท</p>
+                    <p><strong>SOM (ตลาดเป้าหมายระยะสั้น):</strong> เป้าหมายแรกคือการคว้าสวนทุเรียนพรีเมียม 100
+                        แห่งในภาคตะวันออก เพื่อทำผลกำไรและก้าวเป็นผู้นำตลาด</p>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">8 / 15</div>
+    </div>
+
+    <!-- Slide 9: Table (The Business Blueprint - Lean Canvas) -->
+    <div class="slide-container" id="slide9">
+        <h2 class="slide-title">แผนผังธุรกิจ <span>(Lean Canvas)</span></h2>
+        <div class="content-area">
+            <div class="table-layout">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 25%;">องค์ประกอบ</th>
+                            <th>รายละเอียดกลยุทธ์</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>ปัญหา (Problem)</strong></td>
+                            <td>ทำเกษตรแบบตาบอด, เดาสูตรปุ๋ยผิดพลาด, ขาดแคลนแรงงาน, ผลผลิตรากเน่าและไม่แน่นอน</td>
+                        </tr>
+                        <tr>
+                            <td><strong>กลุ่มเป้าหมาย (Customer Segments)</strong></td>
+                            <td>เกษตรกรผู้ปลูกพืชเศรษฐกิจมูลค่าสูง (ทุเรียน, เมล่อน, พืชโรงเรือน) ในพื้นที่ภาคตะวันออก
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>จุดขาย (Value Proposition)</strong></td>
+                            <td>"บ้านอัจฉริยะสำหรับรากพืช" - ระบบควบคุมและจ่ายปุ๋ยอัตโนมัติแม่นยำสูงด้วย AI 100%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>โซลูชัน (Solution)</strong></td>
+                            <td>เซนเซอร์ IoT วัดดิน + AI คำนวณสูตรปุ๋ย + ปั๊มจ่ายปุ๋ยอัตโนมัติ +
+                                แดชบอร์ดมอนิเตอร์บนมือถือ</td>
+                        </tr>
+                        <tr>
+                            <td><strong>ข้อได้เปรียบ (Unfair Advantage)</strong></td>
+                            <td>การเชื่อมฐานข้อมูลดินของกรมพัฒนาที่ดิน (LDD) เข้ากับโมเดล AI เฉพาะทางของเรา
+                                (คู่แข่งเลียนแบบไม่ได้)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="slide-number">9 / 15</div>
+    </div>
+
+    <!-- Slide 10: Two_Column_Tiled_Text (Revenue Streams) -->
+    <div class="slide-container" id="slide10">
+        <h2 class="slide-title">กระแส <span>รายได้</span></h2>
+        <div class="content-area">
+            <div class="two-column tiled">
+                <div>
+                    <i class="fa-solid fa-box-open" style="font-size: 50px; color: #10b981; margin-bottom: 20px;"></i>
+                    <h3 style="font-size: 32px; margin-bottom: 15px;">ค่าฮาร์ดแวร์ & ติดตั้ง</h3>
+                    <p style="font-size: 24px; font-weight: 600; color: #f8fafc; margin-bottom: 20px;">จ่ายครั้งเดียว
+                        (เงินก้อน)</p>
+                    <p>สร้างกระแสเงินสดทันทีจากการขายชุดเซนเซอร์ IoT, ตู้คอนโทรลอัจฉริยะ, ปั๊มผสมปุ๋ย
+                        และค่าบริการติดตั้งหน้างานระดับมืออาชีพ</p>
+                </div>
+                <div>
+                    <i class="fa-solid fa-cloud-arrow-up"
+                        style="font-size: 50px; color: #10b981; margin-bottom: 20px;"></i>
+                    <h3 style="font-size: 32px; margin-bottom: 15px;">ค่าบริการแอปพลิเคชัน (SaaS)</h3>
+                    <p style="font-size: 24px; font-weight: 600; color: #f8fafc; margin-bottom: 20px;">เก็บรายปี
+                        (เงินหมุนเวียนต่อเนื่อง)</p>
+                    <p>รายได้ระยะยาวเพื่อความยั่งยืน เกษตรกรจ่ายเพื่อเข้าถึงระบบคลาวด์บนมือถือ, การแจ้งเตือนแบบเรียลไทม์
+                        และการอัปเดตสูตรปุ๋ย AI รุ่นใหม่</p>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">10 / 15</div>
+    </div>
+
+    <!-- Slide 11: Timeline (Go-to-Market Strategy) -->
+    <div class="slide-container" id="slide11">
+        <h2 class="slide-title">กลยุทธ์ <span>เจาะตลาด</span></h2>
+        <div class="content-area">
+            <div class="timeline-layout">
+                <div class="timeline-line"></div>
+                <div class="timeline-item">
+                    <div class="content-wrapper">
+                        <h3>เฟส 1</h3>
+                        <p style="font-size: 16px;"><strong>ทำ B2B Pilot Demos:</strong>
+                            ให้สวนทุเรียนรายใหญ่ในภาคตะวันออกทดลองใช้ฟรี 1 เดือน เพื่อเก็บข้อมูลพิสูจน์ความคุ้มค่า (ROI)
+                        </p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="content-wrapper">
+                        <h3>เฟส 2</h3>
+                        <p style="font-size: 16px;"><strong>พาร์ทเนอร์รับเหมา:</strong>
+                            จับมือกับบริษัทรับเหมาสร้างโรงเรือนอัจฉริยะ เพื่อพ่วงระบบ NutriFlow
+                            เข้าไปเป็นมาตรฐานการติดตั้ง</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="content-wrapper">
+                        <h3>เฟส 3</h3>
+                        <p style="font-size: 16px;"><strong>ออกงานแฟร์เกษตร:</strong> จัดแสดงในงานนิทรรศการระดับประเทศ
+                            เพื่อสร้างแบรนด์และเจาะกลุ่มนายทุนที่ไม่มีเวลาเข้าสวน</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="content-wrapper">
+                        <h3>เฟส 4</h3>
+                        <p style="font-size: 16px;"><strong>ขยายสเกลทั่วประเทศ:</strong>
+                            กระจายทีมตัวแทนจำหน่ายบุกพื้นที่ปลูกพืชเศรษฐกิจมูลค่าสูงในทุกภูมิภาค</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">11 / 15</div>
+    </div>
+
+    <!-- Slide 12: Rounded_Image_and_Text (Competitive Landscape & Unfair Advantage) -->
+    <div class="slide-container" id="slide12">
+        <h2 class="slide-title">ข้อได้เปรียบ <span>ที่ไม่มีใครลอกเลียนแบบได้</span></h2>
+        <div class="content-area">
+            <div class="two-column rounded-image-layout">
+                <div>
+                    <div class="image-wrapper"><img
+                            src="slide12_shield.png"
+                            alt="เกราะป้องกันดิจิทัลปกป้องข้อมูล"></div>
+                </div>
+                <div>
+                    <h3 style="margin-bottom: 20px;">ทำไมเราถึงชนะ?</h3>
+                    <p style="margin-bottom: 20px;">คู่แข่งในตลาดมีแค่แอปตั้งเวลาธรรมดา (ฝนตกก็ยังรดน้ำ) แต่ NutriFlow
+                        ให้ทั้ง <strong>ความแม่นยำสูง และ เป็นอัตโนมัติเต็มรูปแบบ</strong></p>
+                    <ul>
+                        <li><strong>เชื่อมต่อข้อมูลรัฐ:</strong> AI
+                            ของเรานำข้อมูลเซนเซอร์หน้างานมาประมวลผลร่วมกับฐานข้อมูลดินของกรมพัฒนาที่ดิน (LDD)</li>
+                        <li><strong>AI เฉพาะทาง:</strong>
+                            อัลกอริทึมที่พัฒนาขึ้นเพื่อการปรับแต่งสารอาหารสำหรับพืชแต่ละสายพันธุ์โดยเฉพาะ</li>
+                        <li><strong>กำแพงธุรกิจ (The Moat):</strong> คู่แข่งขายเพียงฮาร์ดแวร์ แต่เราขาย
+                            "ระบบนิเวศอัจฉริยะ" ที่เรียนรู้และเก่งขึ้นเรื่อยๆ ซึ่งไม่มีใครก๊อปปี้ได้</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">12 / 15</div>
+    </div>
+
+    <!-- Slide 13: NEW SLIDE - Sustainable Innovation & Growth -->
+    <div class="slide-container" id="slide13">
+        <h2 class="slide-title">นวัตกรรมและการเติบโต <span>อย่างยั่งยืน</span></h2>
+        <div class="content-area">
+            <div class="two-column">
+                <div>
+                    <div class="image-wrapper">
+                        <img src="sustainable_smart_farming.png" alt="เกษตรกรรมยั่งยืน"
+                            style="object-fit: cover; width: 100%; height: 100%;">
+                    </div>
+                </div>
+                <div>
+                    <h3 style="margin-bottom: 20px;">"Patagonia" แห่งวงการ Agri-Tech</h3>
+                    <p style="margin-bottom: 20px;">เราเชื่อมั่นในการสร้างธุรกิจที่เติบโตไปพร้อมกับการปกป้องสิ่งแวดล้อม
+                        ความยั่งยืนคือแกนหลักของนวัตกรรมเรา:</p>
+                    <ul>
+                        <li><strong>ทนทานยาวนาน:</strong> ฮาร์ดแวร์ IoT เกรดอุตสาหกรรม ทนแดดทนฝน
+                            ออกแบบมาให้ใช้งานได้เกิน 10 ปี ช่วยลดขยะอิเล็กทรอนิกส์ (E-waste) มหาศาล</li>
+                        <li><strong>ไร้สารเคมีตกค้าง (Zero Runoff):</strong> ระบบจ่ายปุ๋ยที่แม่นยำทำให้พืชดูดซึมปุ๋ยได้
+                            100% ป้องกันปุ๋ยเคมีไหลลงสู่ดินหรือแหล่งน้ำของชุมชน</li>
+                        <li><strong>อนุรักษ์ทรัพยากร:</strong> จ่ายน้ำอย่างคุ้มค่าทุกหยดเมื่อดินมีความต้องการจริงๆ
+                            เท่านั้น ช่วยประหยัดทรัพยากรน้ำของชาติได้อย่างยั่งยืน</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">13 / 15</div>
+    </div>
+
+    <!-- Slide 14: Quote (Why We Build This) -->
+    <div class="slide-container" id="slide14">
+        <h2 class="slide-title" style="border: none; text-align: center; padding: 0;">วิสัยทัศน์ <span>ของเรา</span>
+        </h2>
+        <div class="content-area">
+            <div class="quote-layout">
+                <blockquote>เราไม่ได้แค่รดน้ำต้นไม้ แต่เรากำลังให้อาหารแก่อนาคตของการเกษตร
+                    ด้วยความแม่นยำและการพัฒนาที่ยั่งยืน</blockquote>
+                <cite>— ทีมหลวงพี่เท่ง</cite>
+            </div>
+        </div>
+        <div class="slide-number">14 / 15</div>
+    </div>
+
+    <!-- Slide 15: Q&A -->
+    <div class="slide-container" id="slide15">
+        <div class="qa-layout">
+            <h2 style="font-size: 70px;">เลิกเดา แล้วเริ่มรู้จริง</h2>
+            <p style="margin-bottom: 20px;">ขอขอบคุณทุกท่านที่รับฟัง</p>
+
+            <!-- AI Q&A Feature -->
+            <div style="width: 80%; margin: 0 auto;">
+                <div class="qa-ai-box">
+                    <input type="text" id="qa-input" class="qa-ai-input"
+                        placeholder="มีคำถามเพิ่มเติมไหม? ลองถาม AI Co-founder ของเราสิ...">
+                    <button id="btn-qa" class="qa-ai-button">✨ ถาม AI</button>
+                </div>
+                <div id="qa-loader" style="display:none; margin-top: 15px;">
+                    <div class="loader" style="display: block;"></div>
+                </div>
+                <div id="qa-response" class="qa-ai-response"></div>
+            </div>
+
+            <div class="contact-info">
+                www.nutriflow.tech | contact@nutriflow.tech
+            </div>
+        </div>
+        <div class="slide-number">15 / 15</div>
+    </div>
+
+    <script>
+        // --- GEMINI API INTEGRATION ---
+        const apiKey = ""; // API Key is injected by the environment
+
+        // Exponential Backoff Fetch function
+        async function fetchWithBackoff(url, options, maxRetries = 5) {
+            let retries = 0;
+            let delay = 1000;
+
+            while (retries < maxRetries) {
+                try {
+                    const response = await fetch(url, options);
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return await response.json();
+                } catch (error) {
+                    retries++;
+                    if (retries >= maxRetries) {
+                        throw error;
+                    }
+                    await new Promise(resolve => setTimeout(resolve, delay));
+                    delay *= 2; // Exponential backoff (1s, 2s, 4s, 8s, 16s)
+                }
+            }
+        }
+
+        // Generic function to call Gemini API
+        async function callGemini(promptText) {
+            if (!apiKey) {
+                return "Error: API Key is missing. Please run this in the supported environment.";
+            }
+
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+
+            const payload = {
+                contents: [{ parts: [{ text: promptText }] }]
+            };
+
+            const options = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            };
+
+            try {
+                const data = await fetchWithBackoff(url, options);
+                if (data.candidates && data.candidates[0].content.parts[0].text) {
+                    return data.candidates[0].content.parts[0].text;
+                } else {
+                    return "พบรูปแบบการตอบกลับที่ไม่ถูกต้องจาก AI";
+                }
+            } catch (error) {
+                console.error("Gemini API Error:", error);
+                return "ขออภัย ขณะนี้ AI ไม่พร้อมใช้งาน กรุณาลองใหม่อีกครั้ง";
+            }
+        }
+
+        // Feature 1: Live Demo Recipe Generator
+        document.getElementById('btn-generate-recipe').addEventListener('click', async () => {
+            const crop = document.getElementById('demo-crop').value;
+            const soil = document.getElementById('demo-soil').value;
+            const weather = document.getElementById('demo-weather').value;
+            const btn = document.getElementById('btn-generate-recipe');
+            const loader = document.getElementById('recipe-loader');
+            const resultBox = document.getElementById('recipe-result');
+            const resultText = document.getElementById('recipe-text');
+
+            if (!crop || !soil) return;
+
+            // UI Updates
+            btn.disabled = true;
+            btn.innerHTML = "กำลังประมวลผล...";
+            resultBox.style.display = 'none';
+            loader.style.display = 'block';
+
+            const prompt = `Act as the Agronomy AI Engine for NutriFlow. 
+        A farmer has provided the following real-time data:
+        - Crop: ${crop}
+        - Soil Condition: ${soil}
+        - Weather Forecast: ${weather}
+        
+        Generate a concise, professional fertigation recommendation. Include:
+        1. Recommended N-P-K ratio.
+        2. Watering volume adjustment (e.g., Increase by 20%, decrease, etc.).
+        3. A brief 1-sentence reasoning based on the data provided.
+        Format using bullet points and keep it short. Respond entirely in Thai language.`;
+
+            const response = await callGemini(prompt);
+
+            // Render result
+            loader.style.display = 'none';
+            resultBox.style.display = 'block';
+            resultText.innerHTML = response.replace(/\n/g, '<br>');
+
+            btn.disabled = false;
+            btn.innerHTML = "✨ สร้างสูตรปุ๋ยใหม่อีกครั้ง ✨";
+        });
+
+        // Feature 2: Ask AI Co-Founder (Q&A)
+        document.getElementById('btn-qa').addEventListener('click', async () => {
+            const question = document.getElementById('qa-input').value;
+            const btn = document.getElementById('btn-qa');
+            const loader = document.getElementById('qa-loader');
+            const responseBox = document.getElementById('qa-response');
+
+            if (!question) return;
+
+            // UI Updates
+            btn.disabled = true;
+            btn.innerHTML = "กำลังคิด...";
+            responseBox.style.display = 'none';
+            loader.style.display = 'block';
+
+            const prompt = `Act as the highly confident and intelligent AI Co-Founder of "NutriFlow", a Smart Farming startup that uses IoT sensors and AI to automate precision fertigation (watering and fertilizing) for high-value crops like Durian.
+        
+        An investor/judge just asked you this question during your pitch deck Q&A: "${question}"
+        
+        Answer professionally, persuasively, and concisely (maximum 3 sentences). Emphasize ROI, data precision, or automation where relevant. Respond entirely in Thai language.`;
+
+            const response = await callGemini(prompt);
+
+            // Render result
+            loader.style.display = 'none';
+            responseBox.style.display = 'block';
+            responseBox.innerHTML = `<strong>AI Co-Founder:</strong> ${response}`;
+
+            btn.disabled = false;
+            btn.innerHTML = "✨ ถาม AI";
+        });
+
+        // Allow Enter key to submit Q&A
+        document.getElementById('qa-input').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                document.getElementById('btn-qa').click();
+            }
+        });
+
+
+        // --- SLIDE NAVIGATION ---
+        (function () {
+            const slides = document.querySelectorAll('.slide-container');
+            const nav = document.getElementById('slide-nav');
+            let current = 0;
+
+            // Build dots dynamically
+            slides.forEach((_, i) => {
+                const dot = document.createElement('div');
+                dot.className = 'dot' + (i === 0 ? ' active' : '');
+                dot.title = 'Slide ' + (i + 1);
+                dot.addEventListener('click', () => goTo(i));
+                nav.appendChild(dot);
+            });
+
+            function updateDots(idx) {
+                document.querySelectorAll('#slide-nav .dot').forEach((d, i) => {
+                    d.classList.toggle('active', i === idx);
+                });
+            }
+
+            function goTo(idx) {
+                current = idx;
+                slides[idx].scrollIntoView({ behavior: 'smooth', block: 'center' });
+                updateDots(idx);
+            }
+
+            // Sync dots with scroll via IntersectionObserver
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const idx = Array.from(slides).indexOf(entry.target);
+                        if (idx !== -1) { current = idx; updateDots(idx); }
+                    }
+                });
+            }, { threshold: 0.6 });
+
+            slides.forEach(s => observer.observe(s));
+
+            // Keyboard navigation: arrow keys / Page Up / Page Down
+            document.addEventListener('keydown', (e) => {
+                if (['ArrowDown', 'ArrowRight', 'PageDown'].includes(e.key)) {
+                    e.preventDefault();
+                    goTo(Math.min(current + 1, slides.length - 1));
+                } else if (['ArrowUp', 'ArrowLeft', 'PageUp'].includes(e.key)) {
+                    e.preventDefault();
+                    goTo(Math.max(current - 1, 0));
+                }
+            });
+        })();
+
+    </script>
+</body>
+
+</html>
